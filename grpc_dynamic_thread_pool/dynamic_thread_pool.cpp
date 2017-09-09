@@ -81,7 +81,8 @@ void DynamicThreadPool::ThreadFunc()
             cv_.wait(lock);
             threads_waiting_--;
         }
-
+        
+        // Drain callbacks before considering shutdown to ensure all work gets completed.
         if (!callbacks_.empty())
         {
             auto cb = callbacks_.front();
@@ -116,7 +117,7 @@ void DynamicThreadPool::DynamicThread::ThreadFunc()
     std::unique_lock<std::mutex> lock(pool_->mu_);
     pool_->nthreads_--;
 
-      // Move ourselves to dead list
+    // Move ourselves to dead list
     pool_->dead_threads_.push_back(this);
 
     if ((pool_->shutdown_) && (pool_->nthreads_ == 0))
