@@ -8,7 +8,7 @@
 
 int main()
 {
-    AsioIOServicePool pool;
+    AsioIOServicePool pool(4);
     
     boost::asio::steady_timer timer1{pool.getIOService(), std::chrono::seconds{2}};
     boost::asio::steady_timer timer2{pool.getIOService(), std::chrono::seconds{2}};    
