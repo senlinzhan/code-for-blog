@@ -13,7 +13,7 @@ int main()
     boost::asio::steady_timer timer2{pool.getIOService(), std::chrono::seconds{1}};
     
     int value = 0;
-    boost::asio::io_service::strand strand(pool.getIOService());
+    boost::asio::io_service::strand strand{pool.getIOService()};
     
     timer1.async_wait(strand.wrap([&value] (const boost::system::error_code &ec)
                                   {

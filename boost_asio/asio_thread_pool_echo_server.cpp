@@ -66,10 +66,10 @@ public:
         : io_service_(io_service),
           acceptor_(io_service, tcp::endpoint(tcp::v4(), port))
     {
-        do_accept();
+        doAccept();
     }
 
-    void do_accept()
+    void doAccept()
     {
         auto conn = std::make_shared<TCPConnection>(io_service_);
         acceptor_.async_accept(conn->socket(),
@@ -79,7 +79,7 @@ public:
                                    {
                                        conn->start();
                                    }                                   
-                                   this->do_accept();
+                                   this->doAccept();
                                });    
     }
     
