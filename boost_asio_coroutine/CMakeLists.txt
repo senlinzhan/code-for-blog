@@ -1,0 +1,2 @@
+add_executable(asio_coroutine_echo_server asio_coroutine_echo_server.cpp)
+target_link_libraries(asio_coroutine_echo_server ${Boost_SYSTEM_LIBRARY} ${CMAKE_THREAD_LIBS_INIT} boost_coroutine)

@@ -10,6 +10,7 @@ find_package(Threads REQUIRED)
 set(SUBDIRS
     grpc_dynamic_thread_pool
     boost_coroutine
+    boost_asio_coroutine
     boost_asio
     jsonschema
 )
