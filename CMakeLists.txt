@@ -13,8 +13,13 @@ set(SUBDIRS
     boost_asio_coroutine
     boost_asio
     jsonschema
+    gflags
+    glog
+    googletest
 )
 
 foreach(dir ${SUBDIRS})
     add_subdirectory(${dir})
 endforeach()
+
+enable_testing()
